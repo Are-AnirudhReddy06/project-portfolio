@@ -18,7 +18,7 @@ Here are some visuals of the project in action:
 
 
 
-![live demo](https://are-anirudhreddy06.github.io/project-portfolio/) 
+![live demo] (https://are-anirudhreddy06.github.io/project-portfolio/) 
 
 ## 🚀 Features
 
@@ -39,31 +39,6 @@ Here are some visuals of the project in action:
 - [Language/Framework 2:  CSS3]
 - [Language/Framework 3:  JavaScript]
 - [library used : boxincons]
-
-## 📂 Project Structure
-
-project-portfolio
-  |--images
-  |__1000002543.jpg
-  |__1000002550.png
-  |__1000002631.jpg
-  |__1000002688.png
-  |__about-section.png
-  |__anirudhlogo.png
-  |__comingsoon!.jpg
-  |__contact-section.png
-  |__grid4.png
-  |__hero-section.png
-  |__projects-section.png
-  |__skills-section.png
-  |__teckstack.png
-  |__about.png
-  |--videos
-  |__7952139-uhd_3840_2160_30fps.mp4
-  |--app.js
-  |--index.html
-  |--style.css
-  |--readme.md
 
 
   
