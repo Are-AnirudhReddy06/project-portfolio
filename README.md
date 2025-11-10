@@ -18,7 +18,7 @@ Here are some visuals of the project in action:
 
 
 
-![live demo]() 
+![live demo](https://are-anirudhreddy06.github.io/project-portfolio/) 
 
 ## 🚀 Features
 
