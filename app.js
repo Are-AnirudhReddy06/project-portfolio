@@ -31,14 +31,21 @@ closeIcon.addEventListener('click', () => {
 });
 
 // 💬 WhatsApp message
- const inputs = document.querySelectorAll('.contact-box input, .contact-box textarea');
+const whatsappBtn = document.getElementById('whatsappBtn');
 
-    inputs.forEach(input => {
-        input.addEventListener('focus', () => {
-            input.style.borderColor = '#25D366'; // Change border color on focus
-        });
+whatsappBtn.addEventListener('click', () => {
+    const name = document.getElementById('fullName').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const message = document.getElementById('message').value.trim();
 
-        input.addEventListener('blur', () => {
-            input.style.borderColor = '#ccc'; // Revert border color on blur
-        });
-    });
+    if (!name || !email || !message) {
+        alert("Please fill all fields before sending!");
+        return;
+    }
+
+    const whatsappNumber = "916301775024"; // Your number without '+'
+    const text = `Hello, my name is ${name}. Email: ${email}. Message: ${message}`;
+    const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`;
+
+    window.open(url, "_blank");
+});
