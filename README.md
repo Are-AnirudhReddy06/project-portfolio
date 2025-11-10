@@ -18,7 +18,7 @@ Here are some visuals of the project in action:
 
 
 
-![live demo] (https://are-anirudhreddy06.github.io/project-portfolio/) 
+![live demo] only for computers. mobile site has issues  (https://are-anirudhreddy06.github.io/project-portfolio/) 
 
 ## 🚀 Features
 
