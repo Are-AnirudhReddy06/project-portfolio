@@ -19,15 +19,45 @@ videos.forEach(video => {
 const sideBar = document.querySelector('.sidebar');
 const menuIcon = document.querySelector('.menu-icon');
 const closeIcon = document.querySelector('.close-icon');
+const socialLinks = document.querySelectorAll('.social-sidebar a');
 
+// Open sidebar
 menuIcon.addEventListener('click', () => {
-  sideBar.classList.add('open-sidebar');
-  sideBar.classList.remove('close-sidebar');
+  if (!sideBar.classList.contains('open-sidebar')) {
+    sideBar.classList.add('open-sidebar');
+    sideBar.classList.remove('close-sidebar');
+  }
 });
 
+// Close sidebar
 closeIcon.addEventListener('click', () => {
-  sideBar.classList.remove('open-sidebar');
-  sideBar.classList.add('close-sidebar');
+  if (!sideBar.classList.contains('close-sidebar')) {
+    sideBar.classList.add('close-sidebar');
+    sideBar.classList.remove('open-sidebar');
+  }
+});
+
+// Optional: Close sidebar when clicking outside
+document.addEventListener('click', (e) => {
+  if (
+    sideBar.classList.contains('open-sidebar') &&
+    !sideBar.contains(e.target) &&
+    !menuIcon.contains(e.target)
+  ) {
+    sideBar.classList.remove('open-sidebar');
+    sideBar.classList.add('close-sidebar');
+  }
+});
+
+// Make social icons work inside sidebar (clickable even on mobile)
+socialLinks.forEach(link => {
+  link.addEventListener('click', (e) => {
+    e.stopPropagation(); // prevents sidebar from closing before link opens
+    const url = link.getAttribute('href');
+    if(url) {
+      window.open(url, '_blank'); // opens the link in a new tab
+    }
+  });
 });
 
 // 💬 WhatsApp message

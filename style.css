@@ -615,11 +615,6 @@ header ul a:hover{
 }
 
 
-
-/* SLIDER  */
-
-
-
   /* CONTACT SECTION */
 .contact-section{
     width: 80%;
@@ -771,101 +766,129 @@ header ul a:hover{
     }
 }
 
-/* Sidebar */
-
-.menu-icon{
-    font-size: 35px;
-    cursor: pointer;
-    display: none;
+/* ===== Sidebar Toggle Icon ===== */
+.menu-icon {
+  font-size: 35px;
+  cursor: pointer;
+  display: none;
 }
 
+/* ===== Sidebar Base ===== */
+.sidebar {
+  position: fixed;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 0;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.3);
+  z-index: 999;
+  border-bottom-left-radius: 100%;
+  opacity: 0;
+  pointer-events: none;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
 
-.sidebar{
-    position: fixed;
-    right: 0;
-    top: 0;
-    bottom: 70%;
-    width: 0%;
-    background-color: #000000b8;
-    z-index: 999;
-    box-shadow: 0 0 25px rgba(255, 255, 255, 0.479);
-    backdrop-filter: blur(10px);
+/* ===== Sidebar Active ===== */
+.sidebar.open-sidebar {
+  animation: openSidebarModern 0.6s ease forwards;
+  pointer-events: auto;
+}
+
+@keyframes openSidebarModern {
+  0% {
+    width: 0;
     opacity: 0;
-    border-bottom-left-radius: 100%;
-    
+    border-radius: 50% 0 0 50%;
+  }
+  100% {
+    width: 80%;
+    opacity: 1;
+    border-radius: 0;
+  }
 }
 
-.close-icon{
-    font-size: 50px;
-    color: lightgray;
-    padding-left: 10px;
-    cursor: pointer;
+/* ===== Sidebar Close ===== */
+.sidebar.close-sidebar {
+  animation: closeSidebarModern 0.8s ease-in-out forwards;
+  transform-origin: right center;
 }
 
-.sidebar ul{
-    padding-left: 20px;
+@keyframes closeSidebarModern {
+  0% {
+    width: 80%;
+    opacity: 1;
+    transform: translateX(0) scale(1);
+    border-radius: 0;
+  }
+  50% {
+    transform: translateX(20%) scale(0.98);
+    opacity: 0.7;
+  }
+  100% {
+    width: 0;
+    opacity: 0;
+    transform: translateX(100%) scale(0.9);
+    border-radius: 50% 0 0 50%;
+  }
 }
 
-.sidebar ul li{
-    list-style: none;
-    margin-bottom: 30px;
+/* ===== Close Button ===== */
+.close-icon {
+  font-size: 45px;
+  color: lightgray;
+  padding: 15px;
+  cursor: pointer;
 }
 
-.sidebar ul li a{
-    text-decoration: none;
-    color: lightgray;
-    font-size: 30px;
-    font-weight: 900;
-    text-shadow:0 0 15px #4c4c4c;
+/* ===== Sidebar Menu ===== */
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
 }
 
-.social-sidebar{
-    padding-left: 20px;
-    margin-top: 60px;
-    text-wrap: nowrap;
+.sidebar ul li a {
+  text-decoration: none;
+  color: lightgray;
+  font-size: 28px;
+  font-weight: 700;
+  text-shadow: 0 0 12px #4c4c4c;
+  transition: color 0.3s ease;
 }
 
-.social-sidebar a{
-    font-size: 35px;
-    padding: 5px 5px;
-    cursor: pointer;
-    transition: 0.5s;
+.sidebar ul li a:hover {
+  color: white;
 }
 
-/* Sidebar Open ANimation */
-.sidebar.open-sidebar{
-    animation: openSideBarAnimation 1.5s forwards;
+/* ===== Social Links ===== */
+.social-sidebar {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  gap: 25px;
 }
 
-@keyframes openSideBarAnimation {
-    to{
-        width: 80%;
-        opacity: 1;
-        bottom: 0;
-        border-radius: 0;
-    }
+.social-sidebar a {
+  font-size: 35px;
+  color: lightgray;
+  transition: 0.3s;
+  pointer-events: auto !important;
+  z-index: 10;
+  position: relative;
 }
 
-/* Sidebar close ANimation */
-
-.sidebar.close-sidebar{
-    animation: closeSideBarAnimation 1.5s forwards;
+.social-sidebar a:hover {
+  color: white;
+  transform: scale(1.1);
 }
 
-@keyframes closeSideBarAnimation {
-    from{
-        width: 80%;
-        opacity: 1;
-        bottom: 0;
-        border-radius: 0;
-    }
-    to{
-        width: 0;
-        opacity: 0;
-        bottom: 70%;
-        border-bottom-left-radius: 50%;
-    }
-}
 
 
 
@@ -982,104 +1005,200 @@ header ul a:hover{
 }
 
 /* ===== MOBILE (<=700px) ===== */
+/* === MOBILE RESPONSIVE DESIGN (≤700px) === */
 @media screen and (max-width: 700px) {
-    /* Header */
-    header {
-        height: 50px;
-        padding: 0 15px;
-    }
-    header ul,
-    .box-icons {
-        display: none;
-    }
-    .menu-icon {
-        display: inline-block;
-    }
 
-    /* Hero Section */
-    .hero {
-        flex-direction: column;
-    }
-    .hero-info {
-        max-width: 90%;
-        left: 5%;
-        transform: none;
-        text-align: left;
-        margin-top: 40px;
-    }
-    .hero-info h1 {
-        font-size: 38px;
-        line-height: 44px;
-    }
-    .hero-info p {
-        font-size: 16px;
-        line-height: 1.5;
-        text-align: left;
-    }
+  /* Header */
+  header {
+    height: 50px;
+    padding: 0 15px;
+  }
+  header ul,
+  .box-icons {
+    display: none;
+  }
+  .menu-icon {
+    display: inline-block;
+  }
 
-    /* Skills Section */
-    .skills-card {
-        flex-direction: column;
-        gap: 35px;
-    }
-    .skills-vidbox {
-        min-width: 200px;
-        height: 200px;
-    }
-    .skills-info h1,
-    .skills-info p {
-        display: none !important;
-    }
-    .skills-info button {
-        margin: 25px 0;
-    }
+  /* Hero Section */
+  .hero {
+    flex-direction: column;
+  }
+  .hero-info {
+    max-width: 90%;
+    left: 5%;
+    transform: none;
+    text-align: left;
+    margin-top: 40px;
+  }
+  .hero-info h1 {
+    font-size: 38px;
+    line-height: 44px;
+  }
+  .hero-info p {
+    font-size: 16px;
+    line-height: 1.5;
+    text-align: left;
+  }
 
-    /* About / Info Cards Section */
-    .info-cards {
-        grid-template-columns: 1fr;
-        gap: 15px;
-    }
-    .card h1 {
-        font-size: 18px;
-        bottom: 20%;
-    }
-    .card p {
-        font-size: 12px;
-        max-width: 180px;
-    }
+  /* Skills Section */
+  .skills-card {
+    flex-direction: column;
+    gap: 35px;
+  }
+  .skills-vidbox {
+    display: flex !important; /* make sure it's visible */
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
 
-    /* Project Section */
-    .projects-box {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-    .project-card {
-        width: 100%;
-        max-width: 100%;
-        margin: 0 auto;
-        height: auto;
-        padding: 20px;
-    }
-    .project-info {
-        width: 100%;
-        margin-left: 0;
-    }
 
-    /* Section spacing */
-    section, .my-skills, .projects-section, .contact-section, .hero {
-        padding-top: 120px;
-        padding-bottom: 120px;
-    }
+  .skills-vidbox img {
+    display: inline-block;
+    width: 300px;  /* reduce size for mobile */
+    height: auto;
+    border-radius: 8px;
+  }
+  .skills-info h1,
+  .skills-info p {
+    display: none !important;
+  }
+  .skills-info button {
+    margin: 25px 0;
+  }
 
-    /* Contact Section */
-    .contact-section {
-        flex-direction: column;
-        gap: 40px;
-    }
-    .contact-section .social-box {
-        display: none;
-    }
+  /* === INFO CARDS SECTION (MOBILE SLIDER) === */
+  .info-section {
+    width: 100%;
+    align-items: center;
+  }
+
+  .info-cards {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: 25px; 
+    padding: 20px; 
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .info-cards::-webkit-scrollbar {
+    display: none;
+  }
+
+  .card {
+    flex: 0 0 80%;
+    scroll-snap-align: center;
+    height: 75vh;
+    min-width: 70%;
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 0 10px rgba(0,0,0,0.25);
+    background-color: #31008bb7;
+    transition: transform 0.3s ease;
+  }
+
+  .card:active {
+    transform: scale(0.98);
+  }
+
+  .card img {
+    width: 100%;
+    height: 50%;
+    object-fit: cover;
+  }
+
+  .card h1 {
+    font-size: 20px;
+    bottom: 25%;
+    left: 6%;
+    position: absolute;
+    color: lightgray;
+  }
+
+  .card p {
+    font-size: 13px;
+    line-height: 18px;
+    bottom: 8%;
+    left: 6%;
+    position: absolute;
+    max-width: 90%;
+    color: gray;
+  }
+
+  .card:nth-child(1),
+  .card:nth-child(3) {
+    grid-column: unset;
+    grid-row: unset;
+    height: 75vh;
+    max-width: none;
+  }
+
+  /* === PROJECTS SECTION === */
+  .projects-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+    padding: 0 20px;
+    box-sizing: border-box;
+    width: 100%;
+  }
+
+  .project-card {
+    width: 100%;
+    max-width: 90%;
+    margin: 0 auto;
+    height: auto;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.15);
+    background-color: #31008bb7;
+  }
+
+  .project-info {
+    width: 100%;
+    margin-left: 0;
+    text-align: center;
+  }
+
+  /* === SECTION SPACING === */
+  section, .my-skills, .projects-section, .contact-section, .hero {
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
+
+  /* === CONTACT SECTION === */
+.contact-section{
+    width: 80%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    gap: 10%;
+    align-items: center;
+    position: relative;
 }
+
+  .contact-section .section-title {
+    text-align: left;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+
+  .contact-section .social-box {
+    display: none;
+  }
+}
+
+
 
 /* ===== SMALL MOBILE (<=480px) ===== */
 @media screen and (max-width: 480px) {
@@ -1105,9 +1224,17 @@ header ul a:hover{
     .skills-card {
         gap: 25px;
     }
-    .skills-vidbox {
-        display: none;
-    }
+     .skills-vidbox {
+    display: flex !important;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .skills-vidbox img {
+    width: 200px; /* smaller for very small screens */
+    height: auto;
+  }
     .skills-info h1,
     .skills-info p {
         display: none !important;
